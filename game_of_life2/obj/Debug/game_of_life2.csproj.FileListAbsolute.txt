@@ -1,0 +1,9 @@
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\obj\Debug\game_of_life2.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\obj\Debug\game_of_life2.Properties.Resources.resources
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\obj\Debug\game_of_life2.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\obj\Debug\game_of_life2.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\bin\Debug\game_of_life2.exe.config
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\bin\Debug\game_of_life2.exe
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\bin\Debug\game_of_life2.pdb
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\obj\Debug\game_of_life2.exe
+C:\Users\admin\Desktop\mappák\2024-25\Wiezl Csaba\game_of_life\game_of_life2\obj\Debug\game_of_life2.pdb

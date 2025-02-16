@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejtautomata</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li class="menu-elment"><a href="./index.html">Home</a></li>
+            <li class="menu-elment"><a href="./game.html">A játék</a></li>
+            <li class="menu-elment"><a href="./frontend.html">Front-end</a></li>
+            <li class="menu-elment"><a href="./backend.html">Back-end</a></li>
+        </ul>
+    </div>
+    <div class="backend">
+        <p>A program teljes kódja angol nyelven készült el, hogy ezzel is alkalmazkodjak egy  szimulált nemzetközi fejlesztési projekthez</p>
+        <div class="topic">
+            <div class="text">
+                <h2>A menü kódja</h2>
+                <p>A kód fő formja az, amelyik a menüt építi fel, a Form1. Az osztály 8 privát változóval rendelketik, melyek közül az első 
+                   4 NumericUpDown típusú, ezek azok a panelek amelyek az adatok beviteléért felelnek. A másik 4 pedig azok a változók amelyekben
+                   a bevitt értékeket tároljuk, erre a program jelenlegi működéséhez nem lenne szükség, de egy későbbi validálási folyamathoz
+                   hasznos lehe.
+                </p>
+                <p>A konstruktorban értéket adunk a 4 NumericUpDown osztálynak, majd meghívjuk a MakeManu metódust, amely felépíti a menü azon
+                   részeit melyre a program további futása alatt nem kell hivatkoznunk, a beviteli panelekhez tartozó kiírásokat tartalmazó TextBox-okat.
+                   Ebben a metódusban adunk még a formhoz egy gombot is amelynek Click eseményéhez hozzá adjuk a Start metódust.
+                </p>
+                <p>A Start metódusban először eltüntetjük a formot, majd kiolvassuk a bevitt értékeket amelyeket át akarunk adni a játék tér
+                    legeneráláshoz. Mivel tudjuk hogy a számok nem lehetnek nagyok, ezért csak 16 bites intként táruljuk, így ram memória 
+                    helyet spórolva. Ezeket az érékeket táruljuk el az osztály másik 4 privát változójába, majd a játék tér generálásához 
+                    létre hozunk egy új FormGame osztályt. Ennek az osztálynak át is adjuk a frissen eltárolt értékeket (a program későbbi fejlesztése
+                    során e két lépés közé egy validáció kerülhetne). Ezután az újonnan létre hozott osztályt megjelenítjük, majd megvizsgáljuk hogy vissza tért-e 
+                    DialogResult-al, amennyiben igen, újra láthatóvá tesszük a menü formját a formGame-t pedig bezárjuk.
+                </p>
+            </div> 
+            <div class="image-div">
+                <img class="image" src="./pics/fnt_start.png" alt="start-pic">
+                <p>A Start metódus kódja</p>
+            </div>
+        </div>
+        <h2>A játéktér kódja</h2>
+        <div class="topic">
+            <div class="text">
+                <p>A FormGame a Form osztályból van legszármaztatva, és ki van emelve külön file-ba a jobb átláthatóság végett. Az osztály rendelkezik
+                8 privát változóval, illetve 3 statikussal, ezek egyike a random szám amelyre a program során többször is szügség lesz, de ilyen
+                az eltelt generációkat számlálló  változó is, vagy a sejteket tartalmazó lista.
+                </p>
+                <p>Az osztály konstruktorában megkapja a játéktér szélességéhez (x), magasságához (y), sejtek számához, és túlélő képességéhez
+                   megadott értékeket. Ezeket az értékeket azonnal fel is tölti a nekik megfelő privát válozóba. Létre hozza a "fields" két
+                   dimenziós listát is, az x és y értékek alapján. Ezt követően meghívja a CreateCell metódust, melyet késöbb részletesen is
+                   bemutatok, illetve a saját MakeMap metódusát. Utobbi átálítja az ablak méretét a játéktér méretéhez, feltölti a fields mátrixot
+                   a játéktér elemivel (olyan PictureBox-okkal amelyek 10x10 pixel méretűek, és fekete a háttérszinük), és elhelyezi a fent említett
+                   "Új" gombot is. A metódus lefutása után a konstruktorban még létre jön az idő elindítására és megállítására szolgáló gomb, illetve
+                   egy Label is amelyre az adatokat tudjuk kiírni a program futása során. A "timeStart" gomb Click eseményéhez a TimeStartStop metódust
+                   adjuk hozzá. Végül létre hozzuk a timert is, beállítjuk, hogy futásakor a RunGameOfLife metódust hívja meg és azt is hogy 1 másodpercenként
+                   frissüljön.
+                </p>
+            </div>
+            <div class="image-div">
+                <img class="image" src="./pics/vs_of_game.png" alt="variables-pic">
+                <p>A FormGame változói</p>
+            </div>
+        </div>
+        <div class="topic">
+            <div class="text">
+                <p>A CreateCell egy olyan metódus amely paraméternek várja azt, hogy hány sejtet kell létre hoznia, illetve hogy ha van szülő
+                    annak melyek a koordinátái (ha nincs ezt az értéket -2-re állítjuk). 
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

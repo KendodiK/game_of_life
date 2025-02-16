@@ -1,0 +1,70 @@
+body {
+    background: linear-gradient(180deg, 
+    #003366,
+    #004c99,
+    #0073e6,
+    #3399ff,  
+    #66b3ff 
+    );
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+.menu {
+    background-color: rgb(46, 46, 46);
+    padding: 10px;
+}
+
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+}
+
+.menu-elment {
+    border: 2px solid lightgreen;
+    padding: 5px 10px;
+}
+
+.menu-elment a {
+    color: white;
+    text-decoration: none;
+}
+
+.main, .game, .frontend, .backend {
+    background-color: rgb(75, 70, 70);
+    width: 70%;
+    padding: 3%;
+    margin-left: 15%;
+}
+
+.topic {
+    display: flex;
+    justify-content: space-between;
+    margin-top:  3%;
+}
+
+.text {
+    padding-right: 1%;
+}
+
+.image-div {
+    display:  4;
+    border: 2px solid lightgreen;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 2%;
+    padding-top: 0%;
+}
+
+.image-div img { 
+    display: inline-block;
+}
+
+.image-div p {
+    display: flex 3;
+}
