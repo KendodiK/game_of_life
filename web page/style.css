@@ -34,7 +34,7 @@ body {
     text-decoration: none;
 }
 
-.main, .game, .frontend, .backend {
+.main, .game, .frontend, .backend, .todo {
     background-color: rgb(75, 70, 70);
     width: 70%;
     padding: 3%;
@@ -57,14 +57,19 @@ body {
     text-align: center;
     width: fit-content;
     height: fit-content;
-    padding: 2%;
-    padding-top: 0%;
+    margin-right: 1%;
 }
 
 .image-div img { 
     display: inline-block;
+    width: 30vw;
+    height: auto;
 }
 
 .image-div p {
     display: flex 3;
+}
+
+.creator {
+    text-align: right;
 }

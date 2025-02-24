@@ -15,16 +15,8 @@ namespace game_of_life2
     {
         class CellFG
         {
-            private bool isAlive { set; get; }
             private int aloneTime { set; get; }
             public int[] coords;
-
-            public bool IsAlive
-            {
-                set { isAlive = !isAlive; }
-
-                get { return isAlive; }
-            }
 
             public int AloneTime
             {
@@ -43,9 +35,8 @@ namespace game_of_life2
                 get { return aloneTime; }
             }
 
-            public CellFG(bool isAlive, int aloneTime, int[] coords)
+            public CellFG(int aloneTime, int[] coords)
             {
-                this.isAlive = isAlive;
                 this.aloneTime = aloneTime;
                 this.coords = coords;
             }
@@ -72,14 +63,13 @@ namespace game_of_life2
             Text = "Élettér";
             fields = new PictureBox[y, x];
             CreateCell(numOfCells, -2, -2);
-            MakeMap();
 
             timeStart = new Button
             {
                 Width = 70,
                 Height = 50,
                 Top = 10,
-                Left = y * 10 + 15,
+                Left = x * 10 + 15,
                 Text = "Idő elindítás",
                 Parent = this,
             };
@@ -90,13 +80,15 @@ namespace game_of_life2
                 Width = 80,
                 Height = 80,
                 Top = 120,
-                Left = y * 10 + 15,
+                Left = x * 10 + 15,
                 Parent = this
             };
 
             timer = new System.Timers.Timer();
             timer.Elapsed += new ElapsedEventHandler(RunGameOfLife);
             timer.Interval = 1000;
+
+            MakeMap();
         }
 
         private void MakeMap()
@@ -125,7 +117,7 @@ namespace game_of_life2
                 Width = 70,
                 Height = 50,
                 Top = 60,
-                Left = y * 10 + 15,
+                Left = x * 10 + 15,
                 Text = "Új",
                 Parent = this,
             };
@@ -142,20 +134,20 @@ namespace game_of_life2
                 freeCoords = RndCellCoords();
             }
             else
-            {
-                int coordX;
-                int coordY;
+            {     
                 List<(int, int)> free = FreeFields(parentCoordX, parentCoordY);
-                int newCoordId = rnd.Next(0, free.Count);
-                (coordX, coordY) = free[newCoordId];
                 for (int i = 0; i < createbleNum; i++)
                 {
+                    int coordX;
+                    int coordY;
+                    int newCoordId = rnd.Next(0, free.Count);
+                    (coordX, coordY) = free[newCoordId];
                     freeCoords[i] = new int[] { coordY, coordX };
                 }
             }
             for (int i = 0; i < createbleNum; i++)
             {
-                CellFG c = new CellFG(true, 0, freeCoords[i]);
+                CellFG c = new CellFG(0, freeCoords[i]);
                 cells.Add(c);
             }
         }
@@ -173,7 +165,6 @@ namespace game_of_life2
                     if (cells[i].AloneTime > possibleAloneTime)
                     {
                         deletableInd.Add(i);
-                        fields[cells[i].coords[0], cells[i].coords[1]].BackColor = Color.Black;
                     }
                 }
                 else if (numOfFreeFields == needed)
@@ -183,12 +174,13 @@ namespace game_of_life2
                 else if (numOfFreeFields < needed)
                 {
                         deletableInd.Add(i);
-                        fields[cells[i].coords[0], cells[i].coords[1]].BackColor = Color.Black;
                 }
             }
             for (int i = 0; i < deletableInd.Count; i++)
             {
-                cells.RemoveAt(deletableInd[i] - i);
+                int ind = deletableInd[i] - i;
+                fields[cells[ind].coords[0], cells[ind].coords[1]].BackColor = Color.Black;
+                cells.RemoveAt(ind);
             }
         }
 

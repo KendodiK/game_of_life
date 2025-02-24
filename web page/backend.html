@@ -14,23 +14,24 @@
             <li class="menu-elment"><a href="./game.html">A játék</a></li>
             <li class="menu-elment"><a href="./frontend.html">Front-end</a></li>
             <li class="menu-elment"><a href="./backend.html">Back-end</a></li>
+            <li class="menu-elment"><a href="./todo.html">Fejlesztési lehetőségek</a></li>
         </ul>
     </div>
     <div class="backend">
-        <p>A program teljes kódja angol nyelven készült el, hogy ezzel is alkalmazkodjak egy  szimulált nemzetközi fejlesztési projekthez</p>
+        <p>A program teljes kódja angol nyelven készült el, akár egy nemzetközi projektesetében készült volna.</p>
+        <h2>A menü kódja</h2>
         <div class="topic">
             <div class="text">
-                <h2>A menü kódja</h2>
                 <p>A kód fő formja az, amelyik a menüt építi fel, a Form1. Az osztály 8 privát változóval rendelketik, melyek közül az első 
                    4 NumericUpDown típusú, ezek azok a panelek amelyek az adatok beviteléért felelnek. A másik 4 pedig azok a változók amelyekben
                    a bevitt értékeket tároljuk, erre a program jelenlegi működéséhez nem lenne szükség, de egy későbbi validálási folyamathoz
                    hasznos lehe.
                 </p>
-                <p>A konstruktorban értéket adunk a 4 NumericUpDown osztálynak, majd meghívjuk a MakeManu metódust, amely felépíti a menü azon
+                <p>A konstruktorban értéket adunk a 4 NumericUpDown osztálynak, majd meghívjuk a <u>MakeManu</u> metódust, amely felépíti a menü azon
                    részeit melyre a program további futása alatt nem kell hivatkoznunk, a beviteli panelekhez tartozó kiírásokat tartalmazó TextBox-okat.
-                   Ebben a metódusban adunk még a formhoz egy gombot is amelynek Click eseményéhez hozzá adjuk a Start metódust.
+                   Ebben a metódusban adunk még a formhoz egy gombot is amelynek Click eseményéhez hozzá adjuk a <u>Start</u> metódust.
                 </p>
-                <p>A Start metódusban először eltüntetjük a formot, majd kiolvassuk a bevitt értékeket amelyeket át akarunk adni a játék tér
+                <p>A <u>Start</u> metódusban először eltüntetjük a formot, majd kiolvassuk a bevitt értékeket amelyeket át akarunk adni a játék tér
                     legeneráláshoz. Mivel tudjuk hogy a számok nem lehetnek nagyok, ezért csak 16 bites intként táruljuk, így ram memória 
                     helyet spórolva. Ezeket az érékeket táruljuk el az osztály másik 4 privát változójába, majd a játék tér generálásához 
                     létre hozunk egy új FormGame osztályt. Ennek az osztálynak át is adjuk a frissen eltárolt értékeket (a program későbbi fejlesztése
@@ -46,18 +47,18 @@
         <h2>A játéktér kódja</h2>
         <div class="topic">
             <div class="text">
-                <p>A FormGame a Form osztályból van legszármaztatva, és ki van emelve külön file-ba a jobb átláthatóság végett. Az osztály rendelkezik
+                <p>A <u>FormGame</u> a Form osztályból van legszármaztatva, és ki van emelve külön file-ba a jobb átláthatóság végett. Az osztály rendelkezik
                 8 privát változóval, illetve 3 statikussal, ezek egyike a random szám amelyre a program során többször is szügség lesz, de ilyen
                 az eltelt generációkat számlálló  változó is, vagy a sejteket tartalmazó lista.
                 </p>
                 <p>Az osztály konstruktorában megkapja a játéktér szélességéhez (x), magasságához (y), sejtek számához, és túlélő képességéhez
                    megadott értékeket. Ezeket az értékeket azonnal fel is tölti a nekik megfelő privát válozóba. Létre hozza a "fields" két
-                   dimenziós listát is, az x és y értékek alapján. Ezt követően meghívja a CreateCell metódust, melyet késöbb részletesen is
-                   bemutatok, illetve a saját MakeMap metódusát. Utobbi átálítja az ablak méretét a játéktér méretéhez, feltölti a fields mátrixot
+                   dimenziós listát is, az x és y értékek alapján. Ezt követően meghívja a <u>CreateCell</u> metódust, melyet késöbb részletesen is
+                   bemutatok, illetve a saját <u>MakeMap</u> metódusát. Utobbi átálítja az ablak méretét a játéktér méretéhez, feltölti a fields mátrixot
                    a játéktér elemivel (olyan PictureBox-okkal amelyek 10x10 pixel méretűek, és fekete a háttérszinük), és elhelyezi a fent említett
                    "Új" gombot is. A metódus lefutása után a konstruktorban még létre jön az idő elindítására és megállítására szolgáló gomb, illetve
-                   egy Label is amelyre az adatokat tudjuk kiírni a program futása során. A "timeStart" gomb Click eseményéhez a TimeStartStop metódust
-                   adjuk hozzá. Végül létre hozzuk a timert is, beállítjuk, hogy futásakor a RunGameOfLife metódust hívja meg és azt is hogy 1 másodpercenként
+                   egy Label is amelyre az adatokat tudjuk kiírni a program futása során. A "timeStart" gomb Click eseményéhez a <u>TimeStartStop</u> metódust
+                   adjuk hozzá. Végül létre hozzuk a timert is, beállítjuk, hogy futásakor a <u>RunGameOfLife</u> metódust hívja meg és azt is hogy 1 másodpercenként
                    frissüljön.
                 </p>
             </div>
@@ -67,9 +68,66 @@
             </div>
         </div>
         <div class="topic">
+            <div class="image-div">
+                <img class="image" src="./pics/fnt_createcell.png" alt="createcell-pic">
+                <p>A CreateCell metódus kódja</p>
+            </div>
             <div class="text">
-                <p>A CreateCell egy olyan metódus amely paraméternek várja azt, hogy hány sejtet kell létre hoznia, illetve hogy ha van szülő
-                    annak melyek a koordinátái (ha nincs ezt az értéket -2-re állítjuk). 
+                <p>A <u>CreateCell</u> egy olyan metódus amely paraméternek várja azt, hogy hány sejtet kell létre hoznia, illetve hogy ha van szülő
+                    annak melyek a koordinátái (ha nincs ezt az értéket -2-re állítjuk). Először megvizsgálja, hogy hány darab sejtet kell létre hoznia,
+                    ha a kapott parentCoordX értéke -2 akkor meghívja a <u>RndCellCoords</u> eljárást, mely a random helyezi el a szimuláció első sejtjeit,
+                    majd vissza tér egy olyan tömbbel amely minden sejt koordinátáit tartalmazza, ezekkel töltjük fel a "freeCoords" változót.
+                    Ha a parentCoordX értéke nem -2, akkor a szülő koordinátáit átadjuk a <u>FreeFields</u> eljárásnak amely vissza adja a mező körülötti szabad mezőket,
+                    ezek közül random kiválasztunk annyit ahány új sejtet szeretnénk létrehozni és a koordinátáit feltöltjuk a "freeCoords" tömbbe. 
+                    Végül a "freeCoords" elemei alapján megfelelő megennyiségű új <u>CellFG</u> osztály elemet hoz létre, mint új sejteket.                    
+                </p>
+                <p>A <u>CellFG</u> az az osztály amely példányai egy-egy sejt. Két privát változója van, egy amelyben tárolja, hogy azt adott sejt
+                    mennyi ideje van egyedül, illetve egy tömb amelyben a sejt x és y koordinátáit tároljuk. A számon tartott idő nullázódik vagy 0 lesz
+                    vagy eggyel növeljük. Mindkettő változó kap alapértéket a konstruktorban. Az "aloneTime" változó pedig változtatható a példány
+                    létrehozása után is, az AloneTime eljárás segítségével. A "coords" változó publikus, így azt könnyen elérhetjük vagy változtathatjuk.
+                </p>
+            </div>
+        </div>
+        <div class="topic">
+            <div class="text">
+                <p>A <u>FreeFields</u> eljárás megvizsgálja a paraméterben megadott mező (amelyet x és y változó határoz meg) körül hány olyan mező van amelyen
+                   nincs élő sejt. Ezeknek a koordinátáit egy listában tárolja melyet vissza ad miután befejezte a vizsgálatot. Az vizsgálatot úgy végzi, hogy
+                   ha a megadott mező a terület szélén van, akkor a szemközti oldalon vizsgálja a megfelelő mezőket (hiszen akkor ide is kerülhet az új sejt).
+                </p>
+                <p>A <u>RunGameOfLife</u> az a metódus amelyet a timer hív meg, másodpercenként le fut, ez irányítja egy-egy generáció eseményeit. Legelőször
+                   növeli a "time" változót egyszer, így az idő megállításakor a felhasználó is látja majd hány generáció telt el (hányszor futott le a metódus).
+                   Majd mozgatja a már meglévő sejteket, ehhez a korábbihoz hasonlóan a FreeFields eljárást használja, hogy megtudja a sejt küröl melyek azok a szabad
+                   mezők melyekre mozoghat. Ezek közöl véletlenszerűen választ egyet és átírja a CellFG változóját illetve elvégzi a szükséges változtatásokat a fiels-eken is,
+                   amiröl elmozdult annak a háttérszinét feketére állítja, amelyikre lépett annak pedig fehérre. Ezután meghívja a <u>TurnEvents</u> metódust.
+                </p>
+            </div>
+            <div class="image-div">
+                <img class="image" src="./pics/fnt_freefields.png" alt="freefields-pic">
+                <p>A FreeFields eljárás kódja</p>
+            </div>
+        </div>
+        <div class="topic">
+            <div class="image-div">
+                <img class="image" src="./pics/fnt_turnevents.png" alt="turnevents-pic">
+                <p>A TurnEvents metódus kódja</p>
+            </div>
+            <div class="text">
+                <p>A <u>TurnEvents</u> metódus dönti el hogy egy adott sejtel mi történik a generáció alatt. Hogy vizsgálni tudja, meghívja a <u>FreeFields</u>
+                   eljárást és megszámolja, hogy hány üres mező van a sejt körül. Öregedik mert egyedül van? Ekkor  növeli eggyel
+                   a CellFG aloneTime változóját, illetve megvizsgálja, hogy elérte-e a felhasználó által megadott halállozási határt, ha igen, törli a sejtet.
+                   Szaporodik, mert többen vannak egymás melett? Ebben az esetben meghívja a <u>CreateCell</u> metódust, 1 sejtre, a vizsgált sejt koordinátáival,
+                   mint szülő koordinátákkal. Meghal túlszaporodás miatt? Ilyenkor azonnal törli a sejtet. Amikor egy sejtet törlésre ítél a vizsgálat bekerül a
+                   "deletableInd" listába az indexe amely meghatározza a "cells" listában. Az eljárás utolsó lépésben egyesével törli a "deletableInd" listában
+                   szereplő sejteket a "cells" listából az index alapján.
+                </p>
+                <p>Az "Idő elindítása" gomb kattintáskor egy egyszerű metódust hív meg (<u>TimeStartStop</u>), ami mindössze annyit csinál, hogy elindítja a timert ha az nem megy
+                   és a gomb feliratát "Idő megállítása"-ra változtatja. Ha ilyen állpotában nyomunk a gombra akkor a metódus érzékeli, hogy a timer megy, és
+                   megállítja, majd vissza állítja a feliratot "Idő elindítása"-ra. Ilyenkor kiiírja a korábban erre a célra létrehozott "alive" Label-re, hogy
+                   hány élő sejt van, az élettér hány százalékát töltik ki, illetve hogy hány generáció telt el a szimuláció elidítása óta.
+                </p>
+                <p>A program végén még egy metódus van amit az "Új" feliratú gombra kattintva hívunk meg, a <u>NewGame</u> ez leállítja a timert ha az fut.
+                   a formot láthatlanná teszi, kiüríti a "cells" listát, és lenulláza a timert, végül vissza ad egy DialogResult OK-ot. Így a program vissza tér
+                   a Form1-hez, és a felhasználó új szimulációt indíthat.
                 </p>
             </div>
         </div>
